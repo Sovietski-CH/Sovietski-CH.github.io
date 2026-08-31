@@ -314,6 +314,13 @@ h1 em {
 
 .chapter-figure { margin: 0; }
 
+@media (min-width: 821px) {
+  #moscou-universite .chapter-figure {
+    width: calc(100% - clamp(24px, 2vw, 36px));
+    justify-self: end;
+  }
+}
+
 .image-frame {
   position: relative;
   overflow: hidden;
@@ -539,3 +546,4 @@ footer p {
   html { scroll-behavior: auto; }
   .image-frame img { transition: none; }
 }
+
