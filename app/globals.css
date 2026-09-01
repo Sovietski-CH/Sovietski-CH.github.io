@@ -243,10 +243,28 @@ h1 em {
 .manifesto p:last-child { border-right: 0; }
 
 .chapter {
+  position: relative;
   min-height: 96svh;
   scroll-margin-top: 20px;
   padding: clamp(90px, 12vw, 170px) clamp(34px, 7vw, 110px);
   border-bottom: 1px solid var(--line);
+}
+
+.chapter-detail-link {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  cursor: pointer;
+}
+
+.chapter-detail-link:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: -12px;
+}
+
+.chapter-linked:hover .image-frame img {
+  filter: saturate(0.95) contrast(1.01);
+  transform: scale(1.012);
 }
 
 .chapter-dark {
@@ -368,10 +386,81 @@ h1 em {
 .chapter-light .chapter-figure figcaption { color: #686b63; }
 
 .chapter-figure figcaption a {
+  position: relative;
+  z-index: 2;
   flex: none;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.detail-page {
+  min-height: 100svh;
+  background: #0b0c0b;
+  color: var(--foreground);
+}
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(70px, 12vw, 190px) clamp(18px, 3vw, 48px);
+  padding: clamp(72px, 10vw, 150px) clamp(20px, 6vw, 96px);
+}
+
+.detail-photo {
+  margin: 0;
+}
+
+.detail-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #20221f;
+}
+
+.detail-photo-1 {
+  grid-column: 2 / span 6;
+}
+
+.detail-photo-2 {
+  grid-column: 7 / -1;
+}
+
+.detail-photo-3 {
+  grid-column: 1 / span 6;
+}
+
+.detail-photo-4 {
+  grid-column: 2 / -2;
+}
+
+.detail-photo-5 {
+  grid-column: 1 / -1;
+}
+
+.detail-return {
+  display: flex;
+  width: 100%;
+  min-height: clamp(112px, 16vw, 220px);
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px clamp(20px, 7vw, 110px);
+  background: var(--signal);
+  color: #111311;
+  font-size: clamp(17px, 2.3vw, 34px);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.detail-return span:last-child {
+  font-size: 1.35em;
+}
+
+.detail-return:hover {
+  background: #f05a42;
 }
 
 .closing {
@@ -540,10 +629,22 @@ footer p {
   }
 
   .footer-mark { grid-column: auto; }
+
+  .detail-gallery {
+    display: block;
+    padding: 70px 20px;
+  }
+
+  .detail-photo + .detail-photo {
+    margin-top: 72px;
+  }
+
+  .detail-return {
+    min-height: 112px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .image-frame img { transition: none; }
 }
-

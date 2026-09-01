@@ -12,6 +12,7 @@ type Structure = {
   license: string;
   source: string;
   position?: string;
+  detailPath?: string;
 };
 
 const structures: Structure[] = [
@@ -157,6 +158,7 @@ const structures: Structure[] = [
     source:
       'https://commons.wikimedia.org/wiki/File:The_Motherland_Calls,_2019.jpg',
     position: 'center 28%',
+    detailPath: '/structures/mere-patrie',
   },
   {
     id: 'espace',
@@ -271,7 +273,7 @@ export default function Home() {
             key={structure.id}
             className={`chapter ${isLight ? 'chapter-light' : 'chapter-dark'} ${
               isReverse ? 'chapter-reverse' : ''
-            }`}
+            } ${structure.detailPath ? 'chapter-linked' : ''}`}
           >
             <div className="chapter-grid">
               <div className="chapter-index" aria-hidden="true">
@@ -306,6 +308,13 @@ export default function Home() {
                 </figcaption>
               </figure>
             </div>
+            {structure.detailPath ? (
+              <a
+                className="chapter-detail-link"
+                href={structure.detailPath}
+                aria-label={`Ouvrir la galerie : ${structure.name}`}
+              />
+            ) : null}
           </section>
         );
       })}
