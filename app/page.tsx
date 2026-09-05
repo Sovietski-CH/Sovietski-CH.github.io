@@ -230,11 +230,27 @@ export default function Home() {
         ))}
       </nav>
 
+      <details className="mobile-nav">
+        <summary>Monuments · 01—12</summary>
+        <nav aria-label="Parcourir les structures sur mobile">
+          {structures.map((structure, index) => (
+            <a key={structure.id} href={`#${structure.id}`}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              {structure.name}
+            </a>
+          ))}
+        </nav>
+      </details>
+
       <section id="top" className="hero">
         <img
           className="hero-image"
           src="/images/duga.jpg"
           alt="Les antennes métalliques du radar Duga surgissent derrière les arbres."
+          width="1920"
+          height="1280"
+          decoding="async"
+          fetchPriority="high"
         />
         <div className="hero-shade" />
         <div className="hero-copy">
@@ -288,12 +304,19 @@ export default function Home() {
                   {structure.place} · {structure.year}
                 </p>
                 <p className="body-copy">{structure.description}</p>
+                {structure.detailPath ? (
+                  <a className="chapter-detail-cta" href={structure.detailPath}>
+                    Voir les 5 photographies <span aria-hidden="true">→</span>
+                  </a>
+                ) : null}
               </div>
               <figure className="chapter-figure">
                 <div className="image-frame">
                   <img
                     src={structure.image}
                     alt={structure.alt}
+                    loading="lazy"
+                    decoding="async"
                     style={{ objectPosition: structure.position ?? 'center' }}
                   />
                   <span className="image-number" aria-hidden="true">
@@ -308,23 +331,16 @@ export default function Home() {
                 </figcaption>
               </figure>
             </div>
-            {structure.detailPath ? (
-              <a
-                className="chapter-detail-link"
-                href={structure.detailPath}
-                aria-label={`Ouvrir la galerie : ${structure.name}`}
-              />
-            ) : null}
           </section>
         );
       })}
 
       <section className="closing">
         <div className="closing-collage" aria-hidden="true">
-          <img src="/images/house-soviets.jpg" alt="" />
-          <img src="/images/dniprohes.jpg" alt="" />
-          <img src="/images/motherland.jpg" alt="" />
-          <img src="/images/druzhba.jpg" alt="" />
+          <img src="/images/house-soviets.jpg" alt="" loading="lazy" decoding="async" />
+          <img src="/images/dniprohes.jpg" alt="" loading="lazy" decoding="async" />
+          <img src="/images/motherland.jpg" alt="" loading="lazy" decoding="async" />
+          <img src="/images/druzhba.jpg" alt="" loading="lazy" decoding="async" />
         </div>
         <div className="closing-copy">
           <p className="eyebrow">Fin de la traversée</p>

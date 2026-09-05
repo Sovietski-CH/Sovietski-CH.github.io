@@ -6,8 +6,12 @@ export const metadata: Metadata = {
   description:
     'Une archive visuelle des monuments, logements, usines et infrastructures du monde soviétique.',
   icons: {
-    icon: [{ url: '/motherland-favicon-v2.svg', type: 'image/svg+xml' }],
-    shortcut: '/motherland-favicon-v2.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/motherland-favicon-v2.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
     title: 'Béton Rouge — Architectures soviétiques',
