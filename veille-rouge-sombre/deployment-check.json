@@ -1,6 +1,7 @@
 {
   "site": "veille-rouge-sombre",
-  "edition_date": "2026-09-09",
-  "verification_id": "veille-pipeline-check-20260909",
+  "edition_date": "2026-09-10",
+  "published_at": "2026-09-10T08:00:00+02:00",
+  "verification_id": "veille-pipeline-check-20260910-0800-cest",
   "purpose": "Verify that the GitHub briefing branch reaches the public site"
 }
